@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
 import * as serviceWorker from "./serviceWorker";
+import "./index.css";
+import "gestalt/dist/gestalt.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

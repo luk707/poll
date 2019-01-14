@@ -6,3 +6,4 @@ export const ACCOUNT_URL = "/account";
 export const ADMIN_URL = "/admin";
 export const LOGOUT_URL = "/logout";
 export const RESET_PASSWORD_URL = "/reset-password";
+export const CREATE_POLL_URL = "/create-poll";

@@ -8,5 +8,6 @@ export const isLoggingIn = state => auth(state).login.pending;
 export const loginError = state => auth(state).login.error;
 export const isLoggingOut = state => auth(state).logout.pending;
 export const logoutError = state => auth(state).logout.error;
+export const uid = state => auth(state).uid;
 export const isLoggedIn = state =>
-  auth(state).uid !== null && !auth(state).isAnonymous;
+  uid(state) !== null && !auth(state).isAnonymous;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authSelectors } from "./auth";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Spinner, Box } from "gestalt";
 import {
   ACCOUNT_URL,
   ADMIN_URL,
@@ -9,7 +10,8 @@ import {
   LOGIN_URL,
   LOGOUT_URL,
   REGISTER_URL,
-  RESET_PASSWORD_URL
+  RESET_PASSWORD_URL,
+  CREATE_POLL_URL
 } from "./constants";
 
 import PrivateRoute from "./components/private-route";
@@ -21,13 +23,23 @@ import LoginPage from "./pages/login";
 import LogoutPage from "./pages/logout";
 import RegisterPage from "./pages/register";
 import ResetPasswordPage from "./pages/reset-password";
+import CreatePollPage from "./pages/create-poll";
 
 import NotFoundPage from "./pages/not-found";
 
 class Router extends Component {
   render() {
     if (!this.props.hasHydrated) {
-      return "Loading...";
+      return (
+        <Box
+          height={300}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Spinner show accessibilityLabel="Loading" />
+        </Box>
+      );
     }
     return (
       <BrowserRouter>
@@ -42,6 +54,7 @@ class Router extends Component {
             path={RESET_PASSWORD_URL}
             component={ResetPasswordPage}
           />
+          <PrivateRoute path={CREATE_POLL_URL} component={CreatePollPage} />
 
           <Route component={NotFoundPage} />
         </Switch>
